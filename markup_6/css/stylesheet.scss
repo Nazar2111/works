@@ -1,10 +1,353 @@
-.example {
-    display: flex;
-    transition: all .5s;
-    user-select: none;
-    background: linear-gradient(to bottom, white, black);
+@import url(reset.css);
+@font-face {
+    font-family: 'ArialMT';
+    src: url('../fonts/ArialMT/ArialMT.eot?#iefix') format('embedded-opentype'), url('../fonts/ArialMT/ArialMT.woff') format('woff'), url('../fonts/ArialMT/ArialMT.ttf') format('truetype'), url('../fonts/ArialMT/ArialMT.svg#ArialMT') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.test {
-    display: flex;
+@font-face {
+    font-family: 'NK767-Regular';
+    src: url('../fonts/NK767-Regular/NK767-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/NK767-Regular/NK767-Regular.woff') format('woff'), url('../fonts/NK767-Regular/NK767-Regular.ttf') format('truetype'), url('../fonts/NK767-Regular/NK767-Regular.svg#NK767-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/icon/Flaticon.eot");
+    src: url("../fonts/icon/Flaticon.eot?#iefix") format("embedded-opentype"), url("../fonts/icon/Flaticon.woff") format("woff"), url("../fonts/icon/Flaticon.ttf") format("truetype"), url("../fonts/icon/Flaticon.svg#Flaticon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+$Arial: 'ArialMT';
+$NK: 'NK767-Regular';
+$background_header: #000837;
+$search: #cc0000;
+$phones: #04aff8;
+$busket: #33cc00;
+$tabs: #212121;
+$font_menu: #929292;
+$tabs_font: #bcbcbc;
+.clearfix {
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin fonts ($font-family,
+$font-size,
+$color) {
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $color;
+}
+
+body {
+    font: Arial 12px;
+    box-sizing: border-box;
+}
+
+#wrapper {
+    //max-width: 1230px;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+header {
+    @extend.clearfix;
+}
+
+.menu {
+    margin: 15px 0px 20px 0px;
+    li {
+        display: inline-block;
+        margin-left: 30px;
+        &:last-child {
+            a {
+                color: red;
+            }
+        }
+        a {
+            @include fonts($Arial,
+            12px,
+            $font_menu);
+            text-decoration: none;
+            &:hover,
+            active {
+                color: red;
+            }
+        }
+    }
+}
+
+.search {
+    display: block;
+    background: $background_header;
+    padding: 5px 0px 10px;
+}
+
+.logo {
+    float: left;
+    a {
+        width: 152px;
+        height: 83px;
+        background: url(../images/logo.png);
+        display: inline-block;
+        margin: 0px 40px;
+        text-indent: -9999px;
+    }
+}
+
+.numbers_search {
+    display: inline-block;
+    .number {
+        @include fonts($NK,
+        26.5px,
+        #fff);
+        border-left: 2px solid;
+        padding: 0px 5px 0px 10px;
+        &:first-child {
+            border-left: none;
+            padding-left: 0px;
+        }
+    }
+    span {
+        color: $phones;
+    }
+    p {
+        @include fonts(Arial,
+        8.3px,
+        $phones);
+    }
+}
+
+.search_form {
+    height: 35px;
+    margin: 15px 0px 0px;
+    .search_field {
+        width: 85%;
+        margin-right: -5px;
+        border: 1px solid;
+        border-color: $font_menu;
+        padding: 5px;
+        height: 100%;
+        box-sizing: border-box;
+        @include fonts($Arial,
+        12px,
+        $font_menu);
+    }
+    .search_submit {
+        border: 1px solid;
+        border-color: #990000;
+        @extend.search_field;
+        width: 15%;
+        @include fonts($Arial,
+        12px,
+        #fff);
+        background: red;
+    }
+}
+
+.registration {
+    margin-right: 14px;
+    float: right;
+    .registr {
+        margin-left: 40px;
+        @include fonts($Arial,
+        12px,
+        #fff);
+        &:hover,
+        active {
+            color: $phones;
+        }
+    }
+    .lang {
+        @include fonts($Arial,
+        12px,
+        #fff);
+        padding: 0px 0px 0px 4px;
+        border-left: 2px solid;
+        text-decoration: none;
+        &:first-child {
+            border-left: none;
+            color: $phones;
+        }
+        &:hover,
+        active {
+            color: $phones;
+        }
+    }
+}
+
+.basket {
+    padding: 10px 0px;
+    border: 1px solid;
+    border-color: #009900;
+    background: $busket;
+    text-align: center;
+    margin: 34px 0px 0px 83px;
+    &:hover,
+    active {
+        border-color: #990000;
+        background: red;
+    }
+    a {
+        @include fonts($Arial,
+        12px,
+        #fff);
+        padding: 10px 26px;
+        text-decoration: none;
+        &:before {
+            font-family: "Flaticon";
+            content: "\f100";
+            margin-right: 15px;
+        }
+    }
+}
+
+///////////////////////////////////
+
+/* Базовый контейнер табов */
+
+.tabs {
+    width: 100%;
+}
+
+
+/* Стили секций с содержанием */
+
+.tabs>section {
+    display: none;
+}
+
+.tabs>section>.slide {
+    display: block;
+    height: 325px;
+    width: 100%;
+    /* прикрутим анимацию */
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+
+/* Описываем анимацию свойства opacity */
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Прячем чекбоксы */
+
+.tabs>input {
+    display: none;
+    position: absolute;
+}
+
+
+/* Стили переключателей вкладок (табов) */
+
+.tabs>label {
+    display: inline-block;
+    padding: 12px 45px 12px 44px;
+    text-align: center;
+    border-left: 2px solid #f3f3f3;
+    background: $tabs;
+    @include fonts($NK,
+    26px,
+    #fff);
+    &:first-child {
+        border: none;
+    }
+}
+
+#tab1
+/* Изменения стиля переключателей вкладок при наведении */
+
+.tabs>label:hover {
+    color: #888;
+    cursor: pointer;
+    &:last-child {
+        border-right: 0px;
+    }
+}
+
+
+/* Стили для активной вкладки */
+
+.tabs>input:checked+label {
+    color: #555;
+    background: #fff;
+    &:last-child {
+        border-right: 0px;
+    }
+}
+
+
+/* Активация секций с помощью псевдокласса :checked */
+
+#tab1:checked~#content-tab1,
+#tab2:checked~#content-tab2,
+#tab3:checked~#content-tab3,
+#tab4:checked~#content-tab4,
+#tab5:checked~#content-tab5 {
+    display: block;
+}
+
+
+/* Убираем текст с переключателей 
+* и оставляем иконки на малых экранах
+*/
+
+@media screen and (max-width: 680px) {
+    .tabs>label {
+        font-size: 0;
+    }
+    .tabs>label:before {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+
+
+/* Изменяем внутренние отступы 
+*  переключателей для малых экранов
+*/
+
+@media screen and (max-width: 400px) {
+    .tabs_button>label {
+        padding: 15px;
+    }
+}
+
+//////////////////////////////////////
+footer {
+    max-width: 1230px;
+    margin: 0 auto;
+    margin-top: -80px;
+    min-height: 80px;
 }

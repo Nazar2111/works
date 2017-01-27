@@ -3,25 +3,8 @@ module.exports = function(grunt) {
 
     // Задачи
     grunt.initConfig({
-        // Склеиваем
-        concat: {
-            main: {
-                src: [
-                    'js/carousel.js',
-                    'js/modal_window.js' // Все JS-файлы в папке
-                ],
-                dest: 'js/build/index.js'
-            }
-        },
-        // Сжимаем
-        uglify: {
-            main: {
-                files: {
-                    // Результат задачи concat
-                    'js/build/index.min.js': '<%= concat.main.dest %>'
-                }
-            }
-        },
+      
+        
         imagemin: {
             dynamic: {
                 files: [{
@@ -49,7 +32,7 @@ module.exports = function(grunt) {
                     collapseWhitespace: true
                 },
                 files: { // Dictionary of files
-                    'index.html': 'concat_index.html', // 'destination': 'source'
+                    'index.html': 'index_build.html', // 'destination': 'source'
                 }
             }
         },
@@ -63,13 +46,6 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false,
                 }
-            },
-            scripts: {
-                files: ['js/*.js'],
-                tasks: ['concat', 'uglify'],
-                options: {
-                    spawn: false,
-                },
             },
             image: {
                 files: ['png,jpg,gif'],
@@ -94,7 +70,7 @@ module.exports = function(grunt) {
                 }
             },
             htmlmin: {
-                files: ['concat_index.html'],
+                files: ['index_build.html'],
                 tasks: ['htmlmin'],
                 options: {
                     spawn: false,
@@ -129,8 +105,7 @@ module.exports = function(grunt) {
 
 
     // Загрузка плагинов, установленных с помощью npm install
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+   
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -140,5 +115,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-autoprefixer');
 
     // Задача по умолчанию
-    grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'watch', 'sass', 'compass', 'htmlmin', 'cssmin', 'autoprefixer']);
+    grunt.registerTask('default', ['imagemin', 'watch', 'sass', 'compass', 'htmlmin', 'cssmin', 'autoprefixer']);
 };
