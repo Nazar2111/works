@@ -1,0 +1,29 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer-core": "^6.0.1",
+    "grunt": "^1.0.1",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-htmlmin": "^2.1.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-css-prefix": "^0.2.3",
+    "grunt-postcss": "^0.8.0",
+    "grunt-prefix-css": "^0.1.1",
+    "gulp-autoprefixer": "^3.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nazar2111/works/tree/author"
+  },
+  "author": "Nazar",
+  "license": "ISC"
+}
