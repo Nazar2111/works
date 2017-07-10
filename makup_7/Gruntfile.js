@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'src/css/stylesheet.css': 'src/css/stylesheet.scss'
+                    'build/stylesheet.min.css': 'src/css/stylesheet.scss'
                 }
             }
         },
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 
         watch: {
             autoprefixer: {
-                files: ['src/css/stylesheet.css'],
+                files: ['build/stylesheet.min.css'],
                 tasks: ['autoprefixer'],
                 options: {
                     spawn: false,
@@ -61,15 +61,8 @@ module.exports = function(grunt) {
                 }
             },
 
-            cssmin: {
-                files: ['src/css/stylesheet.css'],
-                tasks: ['cssmin'],
-                options: {
-                    spawn: false,
-                }
-            },
             htmlmin: {
-                files: ['build/index.html'],
+                files: ['src/index.html'],
                 tasks: ['htmlmin'],
                 options: {
                     spawn: false,
@@ -78,23 +71,13 @@ module.exports = function(grunt) {
 
 
         },
-        cssmin: {
-            dist:{
-                files: {
-                    'build/stylesheet.min.css': 'src/css/stylesheet.css',
-                    }
-                }
-           
-                
-            
-        },
         autoprefixer: {
             options: {
                 browsers: ['> 0.5%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
             },
             dist: {
                 files: {
-                    'src/css/stylesheet.css': 'src/css/stylesheet.css'
+                    'build/stylesheet.min.css': 'build/stylesheet.min.css'
                 }
             }
         }
@@ -109,9 +92,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-autoprefixer');
 
 
-    grunt.registerTask('default', ['imagemin', 'watch', 'sass', 'compass', 'htmlmin', 'cssmin', 'autoprefixer']);
+    grunt.registerTask('default', ['imagemin', 'watch', 'sass', 'compass', 'htmlmin', 'autoprefixer']);
 };
